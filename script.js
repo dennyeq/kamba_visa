@@ -34,6 +34,6 @@ function calcularPagar() {
     return;
   }
 
-  const pagar = cambio * saldo + (cambio * saldo) * 0.09;
+  const pagar = saldo / cambio + (saldo / cambio) * 0.09;
   document.getElementById("resultadoPagar").textContent = `Total a pagar: ${pagar.toFixed(2)} ${moeda}`;
 }
