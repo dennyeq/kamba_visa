@@ -16,7 +16,7 @@ function calcularCarregar() {
   const pagar = cambio * valor + (cambio * valor) * 0.09;
   const carregar = pagar * 0.02 + (pagar * 0.02) * 0.15 + pagar;
 
-  document.getElementById("resultadoCarregar").textContent = `Total a carregar: ${carregar.toFixed(2)} kz`;
+  document.getElementById("resultadoCarregar").textContent = `Deve fazer carregamento de: ${carregar.toFixed(2)} kz`;
 }
 
 function calcularPagar() {
@@ -35,5 +35,5 @@ function calcularPagar() {
   }
 
   const pagar = saldo / cambio + (saldo / cambio) * 0.09;
-  document.getElementById("resultadoPagar").textContent = `Total a pagar: ${pagar.toFixed(2)} ${moeda}`;
+  document.getElementById("resultadoPagar").textContent = `Compra possível é de: ${pagar.toFixed(2)} ${moeda}`;
 }

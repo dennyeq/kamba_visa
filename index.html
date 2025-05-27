@@ -11,36 +11,36 @@
     <h1>Kamba Visa</h1>
 
     <div class="option-selector">
-      <button onclick="showSection('carregar')">Carregar e Pagar</button>
-      <button onclick="showSection('pagar')">Pagar</button>
+      <button onclick="showSection('carregar')">Carregamento e Compra</button>
+      <button onclick="showSection('pagar')">Compra</button>
     </div>
 
     <div id="carregar" class="section hidden">
-      <h2>Carregar e Pagar Cartão</h2>
+      <h2>Carregamento e Compra</h2>
       
-      <label for="cambio1">Valor do Câmbio (BAI):</label>
+      <label for="cambio1">Câmbio (BAI):</label>
       <input type="number" id="cambio1" placeholder="Ex: 850">
 
-      <label for="valorPagar">Quanto deseja pagar:</label>
+      <label for="valorPagar">Valor do produto:</label>
       <input type="number" id="valorPagar" placeholder="Ex: 100">
 
-      <button onclick="calcularCarregar()">Calcular Total</button>
+      <button onclick="calcularCarregar()">Calcular</button>
       <p id="resultadoCarregar"></p>
     </div>
 
     <div id="pagar" class="section hidden">
-      <h2>Pagar</h2>
+      <h2>Comprar</h2>
 
-      <label for="moeda">Qual será a moeda:</label>
+      <label for="moeda">Moeda:</label>
       <input type="text" id="moeda" placeholder="Ex: euro, dolar ou kz">
 
-      <label for="cambio2">Valor do Câmbio (BAI):</label>
+      <label for="cambio2">Câmbio (BAI):</label>
       <input type="number" id="cambio2" placeholder="Ex: 850">
 
-      <label for="saldoCartao">Quanto tem no cartão:</label>
+      <label for="saldoCartao">Saldo do cartão:</label>
       <input type="number" id="saldoCartao" placeholder="Ex: 100">
 
-      <button onclick="calcularPagar()">Calcular Total</button>
+      <button onclick="calcularPagar()">Calcular</button>
       <p id="resultadoPagar"></p>
     </div>
   </div>
