@@ -12,14 +12,15 @@ function calcularCarregar() {
     alert("Por favor, preencha todos os campos.");
     return;
   }
-  const pagar =  cambio * valor + (cambio * valor) * 0.09;
-  const carregar = pagar * 0.02 + (pagar * 0.02) * 0.15 + pagar; 
+
+  const pagar = cambio * valor + (cambio * valor) * 0.09;
+  const carregar = pagar * 0.02 + (pagar * 0.02) * 0.15 + pagar;
 
   document.getElementById("resultadoCarregar").textContent = `Total a carregar: ${carregar.toFixed(2)} kz`;
 }
 
 function calcularPagar() {
-  const moeda = document.getElementById("moeda").value.trim().toLowerCase();
+  const moeda = document.getElementById("moeda").value.toLowerCase();
   const cambio = parseFloat(document.getElementById("cambio2").value);
   const saldo = parseFloat(document.getElementById("saldoCartao").value);
 
@@ -29,13 +30,9 @@ function calcularPagar() {
   }
 
   if (["euro", "dolar", "kz"].includes(moeda)) {
-    const pagar = saldo / cambio + (saldo / cambio) * 0.09;
+    const pagar = cambio * saldo + (cambio * saldo) * 0.09;
     document.getElementById("resultadoPagar").textContent = `Total a pagar: ${pagar.toFixed(2)} ${moeda}`;
-  } 
-  else {
+  } else {
     alert("Por favor, preencha com 'euro', 'dolar' ou 'kz'.");
   }
-
-  document.getElementById("resultadoPagar").textContent = `Total a pagar: ${pagar.toFixed(2)} ${moeda}`;
 }
-
