@@ -20,19 +20,20 @@ function calcularCarregar() {
 }
 
 function calcularPagar() {
-  const moeda = document.getElementById("moeda").value.toLowerCase();
+  const moeda = document.getElementById("moeda").value.trim().toLowerCase();
   const cambio = parseFloat(document.getElementById("cambio2").value);
   const saldo = parseFloat(document.getElementById("saldoCartao").value);
 
-  if (isNaN(cambio) || isNaN(saldo) || !moeda) {
-    alert("Por favor, preencha todos os campos.");
+  if (!moeda || isNaN(cambio) || isNaN(saldo)) {
+    alert("Por favor, preencha todos os campos corretamente.");
     return;
   }
 
-  if (["euro", "dolar", "kz"].includes(moeda)) {
-    const pagar = cambio * saldo + (cambio * saldo) * 0.09;
-    document.getElementById("resultadoPagar").textContent = `Total a pagar: ${pagar.toFixed(2)} ${moeda}`;
-  } else {
-    alert("Por favor, preencha com 'euro', 'dolar' ou 'kz'.");
+  if (moeda !== "euro" && moeda !== "dolar" && moeda !== "kz") {
+    alert("Por favor, informe a moeda como: euro, dolar ou kz.");
+    return;
   }
+
+  const pagar = cambio * saldo + (cambio * saldo) * 0.09;
+  document.getElementById("resultadoPagar").textContent = `Total a pagar: ${pagar.toFixed(2)} ${moeda}`;
 }
