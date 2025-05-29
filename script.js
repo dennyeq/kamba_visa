@@ -7,20 +7,30 @@ function showSection(sectionId) {
 function calcularCarregar() {
   const cambio = parseFloat(document.getElementById("cambio1").value);
   const valor = parseFloat(document.getElementById("valorPagar").value);
+  const moeda = document.getElementById("moeda1").value.trim().toLowerCase();
 
-  if (isNaN(cambio) || isNaN(valor)) {
+  if (!moeda || isNaN(cambio) || isNaN(valor)) {
     alert("Por favor, preencha todos os campos.");
     return;
   }
 
-  const pagar = cambio * valor + (cambio * valor) * 0.09;
-  const carregar = pagar * 0.02 + (pagar * 0.02) * 0.15 + pagar;
+  if (moeda !== "euro" && moeda !== "dolar" && moeda !== "kz") {
+    alert("Por favor, informe a moeda como: euro, dolar ou kz.");
+    return;
+  }
 
-  document.getElementById("resultadoCarregar").textContent = `Deve fazer carregamento de: ${carregar.toFixed(2)} kz`;
+  const carregar = cambio * valor * 1.11;
+  const pagar = carregar * 0.02 * 1.14 + carregar;
+
+  document.getElementById("resultadoCarregar1").textContent = `Deve fazer carregamento de: ${carregar.toFixed(3)}kz.`;
+
+  document.getElementById("resultadoCarregar2").textContent = `Para isso precisa ter na conta: ${pagar.toFixed(2)}kz.`;
+  
+  document.getElementById("resultadoCarregar3").textContent = `Para compra de: ${valor} ${moeda}`;
 }
 
 function calcularPagar() {
-  const moeda = document.getElementById("moeda").value.trim().toLowerCase();
+  const moeda = document.getElementById("moeda2").value.trim().toLowerCase();
   const cambio = parseFloat(document.getElementById("cambio2").value);
   const saldo = parseFloat(document.getElementById("saldoCartao").value);
 
@@ -34,6 +44,6 @@ function calcularPagar() {
     return;
   }
 
-  const pagar = saldo / cambio + (saldo / cambio) * 0.09;
+  const pagar = saldo / (cambio * 1.11);
   document.getElementById("resultadoPagar").textContent = `Compra possível é de: ${pagar.toFixed(2)} ${moeda}`;
 }
